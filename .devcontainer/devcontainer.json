@@ -25,9 +25,11 @@
         "JUPYTER_ENABLE_LAB": "yes"
     },
     "mounts": [
-        "source=${localWorkspaceFolder},target=/opt/notebooks,type=bind"
+        // Bind the workspace folder, with a fallback if it doesn't exist
+        "source=${localWorkspaceFolder:-/opt/notebooks},target=/opt/notebooks,type=bind"
     ],
     "runArgs": [
         "--shm-size=1gb"
-    ]
+    ],
+    "remoteUser": "root" // Ensures compatibility with permissions for mounted files
 }
