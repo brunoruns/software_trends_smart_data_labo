@@ -1,35 +1,56 @@
+// {
+//     "name": "Jupyter Data Science Devcontainer",
+//     "build": {
+//         "dockerfile": "../Dockerfile"
+//     },
+//     "customizations": {
+//         "vscode": {
+//             "extensions": [
+//                 "ms-python.python",  // Python support
+//                 "ms-toolsai.jupyter" // Jupyter notebooks
+//             ]
+//         }
+//     },
+//     "settings": {
+//         "python.pythonPath": "/usr/local/bin/python"
+//     },
+//     "postCreateCommand": "jupyter notebook --generate-config && echo \"c.NotebookApp.token = ''\" >> ~/.jupyter/jupyter_notebook_config.py",
+//     "forwardPorts": [8888],
+//     "portsAttributes": {
+//         "8888": {
+//             "label": "Jupyter Notebook"
+//         }
+//     },
+//     "remoteEnv": {
+//         "JUPYTER_ENABLE_LAB": "yes"
+//     },
+//     "mounts": [
+//         // Bind the workspace folder, with a fallback if it doesn't exist
+//         "source=${localWorkspaceFolder:-/opt/notebooks},target=/opt/notebooks,type=bind"
+//     ],
+//     "runArgs": [
+//         "--shm-size=1gb"
+//     ],
+//     "remoteUser": "root" // Ensures compatibility with permissions for mounted files
+// }
+
 {
-    "name": "Jupyter Data Science Devcontainer",
+    "name": "Jupyter Devcontainer",
     "build": {
         "dockerfile": "../Dockerfile"
     },
     "customizations": {
         "vscode": {
             "extensions": [
-                "ms-python.python",  // Python support
-                "ms-toolsai.jupyter" // Jupyter notebooks
+                "ms-python.python", 
+                "ms-toolsai.jupyter"
             ]
         }
     },
     "settings": {
         "python.pythonPath": "/usr/local/bin/python"
     },
-    "postCreateCommand": "jupyter notebook --generate-config && echo \"c.NotebookApp.token = ''\" >> ~/.jupyter/jupyter_notebook_config.py",
     "forwardPorts": [8888],
-    "portsAttributes": {
-        "8888": {
-            "label": "Jupyter Notebook"
-        }
-    },
-    "remoteEnv": {
-        "JUPYTER_ENABLE_LAB": "yes"
-    },
-    "mounts": [
-        // Bind the workspace folder, with a fallback if it doesn't exist
-        "source=${localWorkspaceFolder:-/opt/notebooks},target=/opt/notebooks,type=bind"
-    ],
-    "runArgs": [
-        "--shm-size=1gb"
-    ],
-    "remoteUser": "root" // Ensures compatibility with permissions for mounted files
+    "postCreateCommand": "python -m pip install --upgrade pip",
+    "remoteUser": "root" 
 }
