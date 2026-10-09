@@ -32,22 +32,20 @@
 
 #### Simpler version:
     
-# Use Python 3.11 slim as the base image
+# Jupyter devcontainer voor het labo Software Trends / Smart Data
+# Base image: Python 3.11 slim
 FROM python:3.11-slim
 
-# Set working directory inside the container
+# Working directory inside the container
 WORKDIR /workspace
 
-# Install required Python packages
-RUN pip install --no-cache-dir \
-    jupyter \
-    numpy \
-    pandas \
-    matplotlib \
-    seaborn \
-    requests \
-    beautifulsoup4 \
-    neo4j
+# Install Python packages (see requirements.txt)
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r /tmp/requirements.txt
 
 # Expose Jupyter port (optional, useful for external access)
 EXPOSE 8888
+
+# Start Jupyter when the container is run standalone (VS Code overrides this)
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--notebook-dir=/workspace"]
