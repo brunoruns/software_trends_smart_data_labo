@@ -22,7 +22,7 @@ Tijdens dit labo wordt gebruik van **AI** sterk aangemoedigd.
 ## Oefening 1: Telraam open verkeersdata
 1. Maak een account aan op [www.telraam.net](https://www.telraam.net).
 2. Vraag een API credential aan en bewaar het in je `.env`.
-3. Gebruik de **Telraam API** om de gegevens van een Telraam naar keuze op te vragen voor de voorbije week (of voor het Telraam dichtst bij de hogeschool: `9000003902`).
+3. Gebruik de **Telraam API** om de gegevens van een Telraam naar keuze op te vragen voor de voorbije week (of voor het Telraam dichtst bij de hogeschool: `9000008299`).
 
 ### Data kwaliteit
 Beantwoord de volgende vragen:
